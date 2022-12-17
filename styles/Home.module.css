@@ -1,0 +1,40 @@
+.main {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5vh 0;
+}
+
+.products {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4vh;
+    padding: 5vh 0;
+    position: relative;
+}
+
+@media screen and (min-width:1200px) {
+    .main {
+        width: 60%;
+        margin: 0 auto;
+        position: relative;
+        min-height: 80vh;
+    }
+
+    .products {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1vw;
+        padding: 5vh 0;
+    }
+}

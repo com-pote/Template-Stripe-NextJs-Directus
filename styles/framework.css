@@ -1,0 +1,104 @@
+/* Positionnement */
+
+.abs-center {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.flex-column-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile {
+    display: flex !important;
+}
+
+.not-mobile {
+    display: none !important;
+}
+
+.paragraphe {
+    margin: 0 0 3vh 0;
+}
+
+/* couleurs */
+
+.body {
+    color: var(--body);
+}
+
+.body-background {
+    background-color: var(--body);
+}
+
+.dark {
+    color: var(--dark);
+}
+
+.dark-bg {
+    background-color: var(--dark);
+}
+
+.error {
+    color: var(--error);
+    font-weight: 400;
+}
+
+div.error {
+    background-color: var(--error);
+}
+
+.primary {
+    color: var(--primary);
+}
+
+.primary-bg {
+    background-color: var(--primary);
+}
+
+.success {
+    color: var(--success);
+}
+
+div.success {
+    background-color: var(--success);
+}
+
+/* Font */
+
+.font {
+    font-family: var(--font);
+    font-weight: 200;
+    line-height: 1;
+}
+
+.titleFont {
+    font-family: var(--titleFont);
+    font-weight: 200;
+    font-style: italic;
+    line-height: 1;
+}
+
+
+
+@media screen and (min-width:1200px) {
+
+    .mobile {
+        display: none !important;
+    }
+
+    .not-mobile {
+        display: flex !important;
+    }
+}

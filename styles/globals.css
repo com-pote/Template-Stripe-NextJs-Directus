@@ -1,0 +1,222 @@
+/* 1 Variables */
+
+:root {
+  --primary: #e7cfc8;
+  --dark: #111111;
+  --body: #FFFFFF;
+  --success: #8fae1b;
+  --error: #E8544D;
+  --infos: #f7f6f7;
+  --price: #b5b5b5;
+  --font: 'Mulish', sans-serif;
+  --titleFont: 'EB Garamond', serif;
+}
+
+/* 2 Block */
+
+/* 3 inline */
+
+a {
+  color: var(--primary);
+}
+
+
+p,
+li {
+  font-family: var(--font);
+  color: var(--dark);
+  font-weight: 200;
+
+}
+
+p {
+  font-size: 5vw;
+  line-height: 1.4;
+}
+
+strong {
+  font-family: var(--font);
+  color: var(--dark);
+  font-weight: 500;
+  font-style: italic;
+}
+
+ul li {
+  list-style: none;
+}
+
+ol li {
+  font-size: 5vw;
+  text-align: center;
+  list-style: "\2192";
+  list-style-position: outside;
+}
+
+ol li span {
+  left: 5vw;
+  position: relative;
+}
+
+ol li::marker {
+  color: var(--success);
+  font-size: 7vw;
+}
+
+h1 {
+  color: var(--dark);
+  letter-spacing: 1px;
+  font-size: 10vw;
+  line-height: 1;
+  font-family: var(--titleFont);
+  font-weight: 200;
+  font-style: italic;
+}
+
+h2 {
+  color: var(--dark);
+  font-family: var(--font);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 6.5vw;
+  line-height: 1;
+  font-weight: 600;
+  font-style: italic;
+}
+
+h3 {
+  font-size: 6vw;
+  margin: 10px 0;
+  letter-spacing: 1px;
+  text-decoration: underline;
+  color: var(--primary);
+  font-weight: 400;
+  font-style: italic;
+  font-family: var(--font);
+  text-underline-offset: .5vh;
+}
+
+hr {
+  width: 89px;
+  height: 3px;
+  background-color: var(--infos);
+  border: none;
+  margin-top: 10px;
+}
+
+button {
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 15px 20px;
+  color: var(--dark);
+  font-family: var(--titleFont);
+  font-size: 7vw;
+  font-weight: 200;
+  line-height: 1;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--price);
+}
+
+button svg {
+  font-size: .7vw;
+  margin-right: .25vw;
+  fill: var(--body);
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  border: none;
+  margin: 0;
+  padding: 1vh 0 1vh 16px;
+  height: 100%;
+  background-color: transparent;
+  width: 100%;
+  color: var(--dark);
+  font-size: 2vh;
+  outline-color: var(--primary);
+  border-radius: 15px;
+  font-weight: 200;
+}
+
+input:focus,
+input:active,
+select:focus,
+select:active,
+textarea:focus,
+textarea:active {
+  color: var(--primary);
+  border-radius: 15px;
+  outline: 3px solid var(--primary) !important;
+}
+
+input:focus + label,
+select:focus + label,
+textarea:focus + label {
+  color: var(--primary);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+input:-internal-autofill-selected {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  box-shadow: 0 0 0px 1000px white inset;
+  border: none !important;
+  outline: 1px solid var(--primary);
+}
+
+@media screen and (min-width:1200px) {
+
+  p {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  ol li {
+    font-size: 20px;
+  }
+
+  ol li span {
+    left: 5vw;
+  }
+
+  h1 {
+    font-size: 70px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+
+  h3 {
+    font-size: 1.5vw;
+  }
+
+  hr {
+    width: 89px;
+    margin-top: 20px;
+  }
+
+  button {
+    padding: 20px 24px;
+    font-size: .5vw !important;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    padding: 1vw;
+  }
+}

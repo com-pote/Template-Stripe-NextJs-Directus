@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f2f4;
+    min-height: 70vh;
+    padding: 5vh 5vw;
+}
+
+.container h1 {
+    margin-bottom: 1vh;
+}
+
+.items {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.home {
+    margin-top: 2vh;
+}
+
+.home svg,
+.container button svg {
+    font-size: 2vh;
+}
+
+.total {
+    margin: 3vh 0;
+}
+
+@media screen and (min-width:1200px) {
+    .container {
+        min-height: 80vh;
+    }
+}

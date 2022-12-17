@@ -1,0 +1,87 @@
+.burger {
+  color: var(--primary);
+  width: 5vh;
+  height: 4vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  z-index: 3;
+  left: 50%;
+  margin: 0 0 0 -2.5vh;
+  position: absolute;
+}
+
+.cross {
+  z-index: 999999;
+  color: var(--primary);
+  width: 5vh;
+  height: 4vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  left: 50%;
+  margin: 0 0 0 -2.5vh;
+  position: absolute;
+}
+
+.cross div:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  transition: top 0.4s ease-in-out, bottom 0.4s ease-in-out, transform 0.4s 0.4s ease-in-out,
+    background-color 0.4s ease-in-out, width 0.4s ease-in-out;
+  z-index: 4;
+}
+
+.cross div:nth-child(2) {
+  width: 0;
+  transition: width 1s ease-in-out, color 1s ease-in-out, color 0.4s ease-in-out, width 0.4s ease-in-out;
+  z-index: 4;
+}
+
+.cross div:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+  transition: top 0.4s ease-in-out, bottom 0.4s ease-in-out, transform 0.4s 0.4s ease-in-out,
+    background-color 0.4s ease-in-out, width 0.4s ease-in-out;
+}
+
+.line1,
+.line2,
+.line3 {
+  width: 100%;
+  height: 4px;
+  border-radius: 5px;
+  background-color: var(--primary);
+  position: absolute;
+  transform: translateY(0) rotate(0);
+  z-index: 99999;
+  transition: transform 0.4s ease-in-out, top 0.4s 0.4s ease-in-out, bottom 0.4s 0.4s ease-in-out,
+    background-color 0.4s ease-in-out, width 0.4s 0.4s ease-in-out;
+}
+
+.burger div:nth-child(1) {
+  top: 10%;
+  transition: transform 0.4s ease-in-out, top 0.4s 0.4s ease-in-out, bottom 0.4s 0.4s ease-in-out,
+    background-color 0.4s ease-in-out, width 0.4s 0.4s ease-in-out;
+}
+
+.burger div:nth-child(3) {
+  bottom: 10%;
+  transition: transform 0.4s ease-in-out, top 0.4s 0.4s ease-in-out, bottom 0.4s 0.4s ease-in-out,
+    background-color 0.4s ease-in-out, width 0.4s 0.4s ease-in-out;
+}
+
+@media screen and (min-width: 1200px) {
+  .burger {
+    transform: translateX(0);
+  }
+
+  .cross {
+    transform: translateX(0);
+  }
+}

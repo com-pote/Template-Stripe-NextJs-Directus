@@ -1,0 +1,78 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: var(--font);
+    font-weight: normal;
+    font-style: normal;
+}
+
+*:focus {
+    outline-color: var(--highlight);
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--body);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+#root,
+#__next {
+    isolation: isolate;
+    overflow-x: hidden;
+    position: relative;
+}
+
+@media screen and (min-width:1200px) {
+
+    #root,
+    #__next {
+        padding-bottom: 0;
+    }
+}
