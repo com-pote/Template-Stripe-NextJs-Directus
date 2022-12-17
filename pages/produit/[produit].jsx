@@ -7,6 +7,8 @@ import { UsecartContext } from "../../contexts/cartContext";
 import { UseUxContext } from "../../contexts/uxContext";
 import styles from "../../styles/ProductSingle.module.css";
 import Flash from "../../components/Atoms/Flash/Flash";
+import { Container } from "@nextui-org/react";
+import ButtonUI from "../../components/Atoms/Button/Button";
 
 export async function getStaticPaths() {
   const produits = await getAll("product");
@@ -46,25 +48,24 @@ const ProductSingle = ({ product }) => {
       <Head>
         <title>{`${product && product.name} | Nom du Commerce`}</title>
       </Head>
-      <article className={styles.container}>
-        {product && (
-          <>
-            <div className={styles.fimg}>
-              <Image src={getAssetURL(product.fimg.id)} alt={product.name} fill />
-            </div>
-            <div className={styles.infos}>
-              <h1>{product.name}</h1>
-              <span className={styles.price}>{product.price} €</span>
-              <p dangerouslySetInnerHTML={{ __html: product.description }}></p>
-              <button onClick={() => handleButton(product)}>
-                <BsFillCartPlusFill />
-                Ajouter au Panier
-              </button>
-            </div>
-          </>
-        )}
-      </article>
-      {flash && <Flash type={flashType} text={flash} />}
+      <Container className={styles.container}>
+        <article>
+          {product && (
+            <>
+              <div className={styles.fimg}>
+                <Image src={getAssetURL(product.fimg.id)} alt={product.name} fill />
+              </div>
+              <div className={styles.infos}>
+                <h1>{product.name}</h1>
+                <span className={styles.price}>{product.price} €</span>
+                <p dangerouslySetInnerHTML={{ __html: product.description }}></p>
+                <ButtonUI onClick={() => handleButton(product)} text={"Ajouter au Panier"} />
+              </div>
+            </>
+          )}
+        </article>
+        {flash && <Flash type={flashType} text={flash} />}
+      </Container>
     </>
   );
 };

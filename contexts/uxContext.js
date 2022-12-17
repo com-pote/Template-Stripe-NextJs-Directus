@@ -7,7 +7,6 @@ export const UxWrapper = ({ children }) => {
   // MESSAGES FLASH
   const [flash, setFlash] = useState("");
   const [flashType, setFlashType] = useState("");
-  const [menuVisible, toggleMenuVisibility] = useState(false);
 
   /**
    * deleteMessage - delete the current FlashMessage
@@ -37,8 +36,6 @@ export const UxWrapper = ({ children }) => {
         flash,
         flashType,
         handleFlash,
-        menuVisible,
-        toggleMenuVisibility,
       }}
     >
       {children}

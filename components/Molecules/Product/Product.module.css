@@ -13,15 +13,10 @@
 .container h2 {
     font-size: 7vw;
     font-family: var(--font);
-    margin-top: 1.5vh;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%
-}
-
-.container button {
-    margin-top: 3vh;
 }
 
 .price {
@@ -41,25 +36,20 @@
 
 @media screen and (min-width:1200px) {
     .container {
-        width: 11vw;
+        width: 20vw;
         height: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         border-radius: 5px;
-        padding: 2vh 1vw 3vh 1vw;
+        padding: 2vh 2vw 1vh 2vw;
         border: .5px solid rgb(0, 0, 0, .1);
     }
 
     .container h2 {
         font-size: 1.2vh;
         font-family: var(--font);
-        margin-top: 1.5vh;
-    }
-
-    .container button {
-        margin-top: 1vh;
     }
 
     .price {
@@ -70,6 +60,6 @@
     .image {
         position: relative;
         width: 100%;
-        min-height: 5vw;
+        height: auto;
     }
 }

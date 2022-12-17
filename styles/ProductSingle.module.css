@@ -1,8 +1,6 @@
-.container {
-    background-color: var(--infos);
+.container article {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -42,22 +40,17 @@
 }
 
 @media screen and (min-width:1200px) {
-    .container {
-        background-color: var(--infos);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    .container article {
         min-height: 80vh;
     }
 
     .fimg {
         position: relative;
         width: 40vw;
-        height: 65vh;
+        height: 70vh;
     }
 
     .fimg img {
-        padding: 5vh 2vw;
         object-fit: contain;
     }
 

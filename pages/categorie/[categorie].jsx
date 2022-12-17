@@ -5,6 +5,7 @@ import styles from "../../styles/Category.module.css";
 import Flash from "../../components/Atoms/Flash/Flash";
 import { useEffect, useState } from "react";
 import Product from "../../components/Molecules/Product/Product";
+import { Container, Grid } from "@nextui-org/react";
 
 export async function getStaticPaths() {
   const categories = await getAll("category");
@@ -56,13 +57,22 @@ const ProductSingle = ({ category }) => {
       <Head>
         <title>{`${category && category.name} | Nom du Commerce`}</title>
       </Head>
-      <article className={styles.container}>
-        <h1>{category && category.name}</h1>
-        {products && (
-          <div className={styles.products}>{products && products.map((p) => <Product key={p.id} product={p} />)}</div>
-        )}
-      </article>
-      {flash && <Flash type={flashType} text={flash} />}
+      <Container responsive fluid className={styles.main}>
+        <article className={styles.container}>
+          <h1>{category && category.name}</h1>
+          {products && (
+            <Grid.Container gap={2} justify="flex-start">
+              {products &&
+                products.map((p) => (
+                  <Grid key={p.id}>
+                    <Product product={p} />
+                  </Grid>
+                ))}
+            </Grid.Container>
+          )}
+        </article>
+        {flash && <Flash type={flashType} text={flash} />}
+      </Container>
     </>
   );
 };
