@@ -1,12 +1,12 @@
 import styles from "../styles/Cart.module.css";
-import { UsecartContext } from "../contexts/cartContext";
 import Link from "next/link";
-import CartItem from "../components/CartItem/CartItem";
+import CartItem from "../components/Molecules/CartItem/CartItem";
 import checkout from "../services/stripe";
 import { IoHome } from "react-icons/io5";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { getAll } from "../services/directus/utils";
 import { useGetTotalQuantity } from "../hooks/useGetTotalQuantity";
+import { UsecartContext } from "../contexts/cartContext";
 
 export async function getStaticProps() {
   const categories = await getAll("category");

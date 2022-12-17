@@ -4,7 +4,7 @@ import logo from "../../../public/logo.png";
 import { BsFacebook, BsInstagram, BsSearch } from "react-icons/bs";
 import { IoCartSharp } from "react-icons/io5";
 import Link from "next/link";
-import ToggleMenuIcon from "../../ToggleMenuIcon/ToggleMenuIcon";
+import ToggleMenuIcon from "../../Atoms/ToggleMenuIcon/ToggleMenuIcon";
 import { useGetTotalQuantity } from "../../../hooks/useGetTotalQuantity";
 
 const Header = () => {

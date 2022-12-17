@@ -1,6 +1,6 @@
 import styles from "./ToggleMenuIcon.module.css";
-import { UseUxContext } from "../../contexts/uxContext";
 import { useCallback } from "react";
+import { UseUxContext } from "../../../contexts/uxContext";
 
 const ToggleMenuIcon = () => {
   const { menuVisible, toggleMenuVisibility } = UseUxContext();

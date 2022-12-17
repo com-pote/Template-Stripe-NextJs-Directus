@@ -20,5 +20,8 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
     "stripe": "^11.3.0"
+  },
+  "devDependencies": {
+    "turbo": "^1.6.3"
   }
 }

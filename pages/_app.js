@@ -1,4 +1,4 @@
-import Layout from "../components/UI/Layout/Layout";
+import Layout from "../components/Layout/Layout";
 import "../styles/globals.css";
 import "../styles/framework.css";
 import "../styles/reset.css";

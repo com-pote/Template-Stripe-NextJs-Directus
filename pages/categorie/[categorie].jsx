@@ -2,9 +2,9 @@ import { find, getAll, getAllBy } from "../../services/directus/utils";
 import Head from "next/head";
 import { UseUxContext } from "../../contexts/uxContext";
 import styles from "../../styles/Category.module.css";
-import Flash from "../../components/Flash/Flash";
+import Flash from "../../components/Atoms/Flash/Flash";
 import { useEffect, useState } from "react";
-import Product from "../../components/Product/Product";
+import Product from "../../components/Molecules/Product/Product";
 
 export async function getStaticPaths() {
   const categories = await getAll("category");

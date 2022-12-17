@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import Footer from "../Footer/Footer";
-import Navbar from "../Navbar/Navbar";
-import Header from "../Header/Header";
+import Footer from "../Molecules/Footer/Footer";
+import Navbar from "../Molecules/Navbar/Navbar";
+import Header from "../Molecules/Header/Header";
 import { loadStripe } from "@stripe/stripe-js";
 import getConfig from "next/config";
-import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const { publicRuntimeConfig } = getConfig();
 

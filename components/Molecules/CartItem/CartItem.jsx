@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { UsecartContext } from "../../contexts/cartContext";
-import getAssetURL from "../../services/directus/getAssets";
+import { UsecartContext } from "../../../contexts/cartContext";
+import getAssetURL from "../../../services/directus/getAssets";
 import styles from "./CartItem.module.css";
 import { BsTrash, BsPlusLg } from "react-icons/bs";
 import { FaMinus } from "react-icons/fa";

@@ -6,7 +6,7 @@ import Head from "next/head";
 import { UsecartContext } from "../../contexts/cartContext";
 import { UseUxContext } from "../../contexts/uxContext";
 import styles from "../../styles/ProductSingle.module.css";
-import Flash from "../../components/Flash/Flash";
+import Flash from "../../components/Atoms/Flash/Flash";
 
 export async function getStaticPaths() {
   const produits = await getAll("product");

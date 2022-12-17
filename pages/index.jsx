@@ -1,9 +1,9 @@
 import Head from "next/head";
-import Product from "../components/Product/Product";
+import Product from "../components/Molecules/Product/Product";
 import styles from "../styles/Home.module.css";
 import { getAll } from "../services/directus/utils";
 import { UseUxContext } from "../contexts/uxContext";
-import Flash from "../components/Flash/Flash";
+import Flash from "../components/Atoms/Flash/Flash";
 
 export async function getStaticProps() {
   const products = await getAll("product");

@@ -1,10 +1,10 @@
 import styles from "./Product.module.css";
 import Image from "next/image";
-import getAssetURL from "../../services/directus/getAssets";
-import { UsecartContext } from "../../contexts/cartContext";
-import { UseUxContext } from "../../contexts/uxContext";
+import { UsecartContext } from "../../../contexts/cartContext";
+import { UseUxContext } from "../../../contexts/uxContext";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import Link from "next/link";
+import getAssetURL from "../../../services/directus/getAssets";
 
 const Product = ({ product }) => {
   const { addOneToCart } = UsecartContext();
