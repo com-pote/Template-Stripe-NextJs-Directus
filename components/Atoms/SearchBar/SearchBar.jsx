@@ -21,6 +21,7 @@ const SearchBar = () => {
         },
       }}
       placeholder="Rechercher"
+      aria-label="Barre de recherche"
     />
   );
 };

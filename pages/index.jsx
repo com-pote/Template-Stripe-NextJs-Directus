@@ -39,7 +39,7 @@ export default function Home({ products }) {
 
       <Container responsive fluid className={styles.main}>
         <h1>Produits</h1>
-        <Grid.Container gap={2} justify="flex-start">
+        <Grid.Container gap={2} justify="center">
           {products &&
             products.map((p) => (
               <Grid key={p.id}>

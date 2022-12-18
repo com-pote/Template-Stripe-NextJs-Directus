@@ -4,7 +4,9 @@ import "../styles/framework.css";
 import "../styles/reset.css";
 import { CartWrapper } from "../contexts/cartContext";
 import { UxWrapper } from "../contexts/uxContext";
-import { NextUIProvider } from "@nextui-org/react";
+import { NextUIProvider, createTheme } from "@nextui-org/react";
+
+const darkTheme = createTheme({ type: "dark" });
 
 function MyApp({ Component, pageProps }) {
   return (

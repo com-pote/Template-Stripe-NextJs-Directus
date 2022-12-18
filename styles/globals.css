@@ -67,7 +67,7 @@ h1 {
   letter-spacing: 1px;
   font-size: 10vw;
   line-height: 1;
-  font-family: var(--titleFont);
+  font-family: var(--font);
   font-weight: 200;
   font-style: italic;
 }
@@ -108,13 +108,9 @@ button {
   white-space: nowrap;
   cursor: pointer;
   text-decoration: none;
-  padding: 15px 20px;
-  color: var(--dark);
   font-family: var(--titleFont);
-  font-size: 7vw;
   font-weight: 200;
   line-height: 1;
-  background-color: var(--primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -153,7 +149,4 @@ button {
     margin-top: 20px;
   }
 
-  button {
-    font-size: .7vw !important;
-  }
 }

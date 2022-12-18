@@ -41,7 +41,7 @@
 
 @media screen and (min-width:1200px) {
     .container article {
-        min-height: 80vh;
+        min-height: 90vh;
     }
 
     .fimg {

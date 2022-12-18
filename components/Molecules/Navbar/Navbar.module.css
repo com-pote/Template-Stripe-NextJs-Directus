@@ -1,30 +1,22 @@
 .container {
-    border-bottom: 2px solid var(--price);
     width: 100%;
     height: 10vh;
 }
 
 .logo {
     position: relative;
-    height: 10vh;
-    width: 10vh;
+    height: 6vh;
+    width: 6vh;
 }
 
 .logo img {
     object-fit: contain;
 }
 
-.categories {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 65vh;
-}
-
-.categories li {
+.categories li,
+.categories li p {
     font-family: var(--font);
-    text-transform: uppercase;
+    text-transform: uppercase !important;
     font-size: 3vw;
     font-weight: 500;
 }
@@ -32,29 +24,16 @@
 @media screen and (min-width:1200px) {
     .container {
         width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        top: 0;
-        position: relative;
         border-bottom: 0 solid transparent;
     }
 
-    .logo {
-        height: 5vh;
-        width: 5vh;
-        margin: 0;
-    }
-
     .categories {
-        flex-direction: row;
-        min-height: auto;
         width: 50%;
     }
 
-    .categories li {
+    .categories li,
+    .categories li p {
         font-family: var(--font);
-        text-transform: uppercase;
         font-size: .7vw;
         font-weight: 500;
     }
