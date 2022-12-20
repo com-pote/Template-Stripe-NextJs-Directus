@@ -7,6 +7,7 @@ export const UxWrapper = ({ children }) => {
   // MESSAGES FLASH
   const [flash, setFlash] = useState("");
   const [flashType, setFlashType] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState();
 
   /**
    * deleteMessage - delete the current FlashMessage
@@ -36,6 +37,8 @@ export const UxWrapper = ({ children }) => {
         flash,
         flashType,
         handleFlash,
+        isAuthenticated,
+        setIsAuthenticated,
       }}
     >
       {children}

@@ -86,3 +86,58 @@ export const deleteItem = async (item, id) => {
 export const update = async (item, id) => {
   return await directus.items(item).updateOne(id);
 };
+
+// Auth
+
+/**
+ * [read The current user Informations]
+ *
+ * @return  {[Promise<JSON>]}  [return The current user Logged]
+ */
+export const me = async () => {
+  return await directus.users.me.read();
+};
+
+/**
+ * [update informations of the user]
+ *
+ * @param   {[{email: string, password: string}]}  credentials
+ *
+ * @return  {[Promise<JSON>]}               [return a confirmation]
+ */
+export const updateMe = async (credentials) => {
+  return await directus.users.me.update(credentials);
+};
+
+/**
+ * [Create a password change request]
+ *
+ * @param   {[String]}  email  [email description]
+ *
+ * @return  {[Promise<JSON>]}         [return description]
+ */
+export const changePassword = async (email) => {
+  return await directus.auth.password.request(email);
+};
+
+/**
+ * [Create a new user : Subscription]
+ *
+ * @param   {[{email: String, password: String}]}  credentials  [credentials description]
+ *
+ * @return  {[Promise<JSON>]}               [return confirmation]
+ */
+export const createUser = async (credentials) => {
+  return await directus.users.createOne(credentials);
+};
+
+/**
+ * [log a user]
+ *
+ * @param   {[{email: String, password: String}]}  credentials  [credentials description]
+ *
+ * @return  {[Promise<JSON>]}               [return a confirmation]
+ */
+export const login = async (credentials) => {
+  return await directus.auth.login(credentials);
+};

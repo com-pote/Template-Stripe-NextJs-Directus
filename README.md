@@ -2,8 +2,8 @@
 
 ## Fonctionnalités
 
-- Panier d'achat en persisté localstorage
-- Champ de Recherche de produit par nom
+- Panier d'achat persisté en localstorage
+- Champ de Recherche de produits par nom
 - Fiches Produits
 - Cartes Produits
 - Catégories Distinctes dans le menu
@@ -16,9 +16,9 @@ Ce Projet est en cours de construction et permettra la facilitation de la mise e
 
 ## A venir :
 
-- Possibilité d'aggréger les API des différentes plateformes de commerce (Woocommerce, shopify, etc...)
-- Possibilité de se connecter aux API de livraisons (Fedex etc)
-- Possibilité de générer une facture
 - Authentification sur le site.
+- Possibilité de générer une facture
 - Tri des produits
 - Filtrage des produits
+- Possibilité d'aggréger les API des différentes plateformes de commerce (Woocommerce, shopify, etc...)
+- Possibilité de se connecter aux API de livraisons (Fedex etc)
