@@ -6,6 +6,8 @@ const cartContext = createContext();
 
 export const CartWrapper = ({ children }) => {
   const [allProducts, setAllProducts] = useState([]);
+  const [search, setSearch] = useState("");
+  const [result, setResult] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
   const [stripeCart, setStripeCart] = useState([]);
 
@@ -96,6 +98,10 @@ export const CartWrapper = ({ children }) => {
         deleteFromCart,
         getTotalCost,
         stripeCart,
+        search,
+        setSearch,
+        result,
+        setResult,
       }}
     >
       {children}

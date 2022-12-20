@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 const NavbarUi = ({ categories }) => {
   const router = useRouter();
   const { asPath } = router;
+
   return (
     <>
       <Navbar variant="sticky" maxWidth="fluid" className={styles.container} justify="space-between">
