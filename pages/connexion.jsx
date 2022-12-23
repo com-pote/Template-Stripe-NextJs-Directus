@@ -1,4 +1,7 @@
+import { Container } from "@nextui-org/react";
+import styles from "../styles/Login.module.css";
 import Head from "next/head";
+import LoginCard from "../components/Molecules/LoginCard/LoginCard";
 
 const Login = () => {
   return (
@@ -7,7 +10,10 @@ const Login = () => {
         <title>Connexion à l&apos;espace adhérent | PoCLi</title>
         <meta name="description" content="Page de connexion à l'espace membre" />
       </Head>
-      <div className="loginContainer"></div>
+      <Container className={styles.container}>
+        <h1>Connexion</h1>
+        <LoginCard />
+      </Container>
     </>
   );
 };

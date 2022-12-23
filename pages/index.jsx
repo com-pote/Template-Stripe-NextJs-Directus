@@ -5,6 +5,9 @@ import { getAll } from "../services/directus/utils";
 import { UseUxContext } from "../contexts/uxContext";
 import Flash from "../components/Atoms/Flash/Flash";
 import { Container, Grid } from "@nextui-org/react";
+import Hero from "../components/Molecules/Hero/Hero";
+import ButtonUI from "../components/Atoms/Button/Button";
+import Link from "next/link";
 
 export async function getStaticProps() {
   const products = await getAll("product");
@@ -38,15 +41,20 @@ export default function Home({ products }) {
       </Head>
 
       <Container responsive fluid className={styles.main}>
-        <h1>Produits</h1>
+        <Hero />
+        <h1>Les derniers produits</h1>
         <Grid.Container gap={2} justify="center">
           {products &&
-            products.map((p) => (
+            products.slice(0, 5).map((p) => (
               <Grid key={p.id}>
                 <Product product={p} />
               </Grid>
             ))}
         </Grid.Container>
+
+        <Link href="/produits">
+          <ButtonUI text="Voir tous les produits" color="neutral" />
+        </Link>
 
         {flash && <Flash type={flashType} text={flash} />}
       </Container>

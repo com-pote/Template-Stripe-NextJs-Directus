@@ -1,7 +1,6 @@
 import Image from "next/image";
 import getAssetURL from "../../services/directus/getAssets";
-import { find, getAll } from "../../services/directus/utils";
-import { BsFillCartPlusFill } from "react-icons/bs";
+import { findBy, getAll } from "../../services/directus/utils";
 import Head from "next/head";
 import { UsecartContext } from "../../contexts/cartContext";
 import { UseUxContext } from "../../contexts/uxContext";
@@ -9,12 +8,13 @@ import styles from "../../styles/ProductSingle.module.css";
 import Flash from "../../components/Atoms/Flash/Flash";
 import { Container } from "@nextui-org/react";
 import ButtonUI from "../../components/Atoms/Button/Button";
+import BreadCrumb from "../../components/Molecules/BreadCrumb/BreadCrumb";
 
 export async function getStaticPaths() {
   const produits = await getAll("product");
 
   const paths = produits.map((item) => ({
-    params: { produit: item.id.toString() },
+    params: { produit: item.name.toString() },
   }));
   return {
     paths,
@@ -23,8 +23,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const id = context.params.produit;
-  const product = await find("product", id);
+  const name = context.params.produit;
+  const product = await findBy("product", {
+    search: name,
+    fields: ["*.*"],
+  });
   const categories = await getAll("category");
   return {
     props: {
@@ -49,6 +52,7 @@ const ProductSingle = ({ product }) => {
         <title>{`${product && product.name} | Nom du Commerce`}</title>
       </Head>
       <Container className={styles.container}>
+        <BreadCrumb />
         <article>
           {product && (
             <>
@@ -57,6 +61,7 @@ const ProductSingle = ({ product }) => {
               </div>
               <div className={styles.infos}>
                 <h1>{product.name}</h1>
+                <span className={styles.category}>{product.category.name}</span>
                 <span className={styles.price}>{product.price} €</span>
                 <p dangerouslySetInnerHTML={{ __html: product.description }}></p>
                 <ButtonUI onClick={() => handleButton(product)} text={"Ajouter au Panier"} />

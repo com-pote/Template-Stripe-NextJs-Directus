@@ -6,6 +6,10 @@
     align-items: center;
 }
 
+.main h1 {
+    margin: 5vh 0;
+}
+
 .products {
     width: 100%;
     display: flex;

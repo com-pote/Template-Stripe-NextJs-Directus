@@ -1,13 +1,13 @@
 import Head from "next/head";
-import Product from "../components/Molecules/Product/Product";
-import styles from "../styles/Search.module.css";
-import { getAll, getAllBy } from "../services/directus/utils";
-import { UseUxContext } from "../contexts/uxContext";
-import Flash from "../components/Atoms/Flash/Flash";
+import Product from "../../components/Molecules/Product/Product";
+import styles from "../../styles/Products.module.css";
+import { getAll, getAllBy } from "../../services/directus/utils";
+import { UseUxContext } from "../../contexts/uxContext";
+import Flash from "../../components/Atoms/Flash/Flash";
 import { Container, Grid } from "@nextui-org/react";
-import { UsecartContext } from "../contexts/cartContext";
+import { UsecartContext } from "../../contexts/cartContext";
 import { useEffect } from "react";
-import Breadcrumb from "../components/Molecules/BreadCrumb/BreadCrumb";
+import Breadcrumb from "../../components/Molecules/BreadCrumb/BreadCrumb";
 
 export async function getStaticProps() {
   const categories = await getAll("category");
@@ -19,7 +19,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Search() {
+const Products = () => {
   const { flash, flashType } = UseUxContext();
 
   const { search, result, setResult } = UsecartContext();
@@ -56,4 +56,6 @@ export default function Search() {
       </Container>
     </>
   );
-}
+};
+
+export default Products;

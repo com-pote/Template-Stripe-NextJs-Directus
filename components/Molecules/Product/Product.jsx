@@ -22,12 +22,12 @@ const Product = ({ product }) => {
       {product && (
         <Card className={styles.container} isPressable variant="bordered">
           <Card.Header className={styles.header}>
-            <Link href={`/produit/${product.id}`}>
+            <Link href={`/produits/${product.name}`}>
               <h2>{product.name}</h2>
             </Link>
           </Card.Header>
           <Card.Body className={styles.body}>
-            <Link href={`/produit/${product.id}`} className={styles.image}>
+            <Link href={`/produits/${product.name}`} className={styles.image}>
               <Image
                 src={getAssetURL(product.fimg.id)}
                 alt={product.name}

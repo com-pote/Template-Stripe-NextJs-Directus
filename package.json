@@ -6,19 +6,24 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "turbo": "npx turbo build lint"
   },
   "dependencies": {
     "@directus/sdk": "^10.3.0",
     "@google-cloud/logging": "^10.3.2",
-    "@nextui-org/react": "^1.0.0-beta.10",
+    "@nextui-org/react": "^1.0.0-beta.11",
     "@stripe/react-stripe-js": "^1.16.1",
     "@stripe/stripe-js": "^1.46.0",
+    "dayjs": "^1.11.7",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
+    "jose": "^4.11.1",
+    "js-cookie": "^3.0.1",
     "next": "13.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.41.0",
     "react-icons": "^4.7.1",
     "stripe": "^11.3.0"
   },

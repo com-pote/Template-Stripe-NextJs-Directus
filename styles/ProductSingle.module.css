@@ -1,3 +1,7 @@
+.container {
+    padding: 5vh 0;
+}
+
 .container article {
     display: flex;
     justify-content: center;
@@ -26,6 +30,16 @@
 
 .infos h1 {
     margin-bottom: 2vh;
+}
+
+.category {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: center;
+    color: var(--price);
+    font-style: italic;
+
 }
 
 .price {

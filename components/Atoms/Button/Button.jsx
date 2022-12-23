@@ -1,7 +1,7 @@
 import { Button } from "@nextui-org/react";
 import styles from "./Button.module.css";
 
-const ButtonUI = ({ text, onClick, color, icon }) => {
+const ButtonUI = ({ text, onClick, color, icon, type }) => {
   return (
     <Button
       flat
@@ -11,6 +11,7 @@ const ButtonUI = ({ text, onClick, color, icon }) => {
       auto
       color={color ? color : "primary"}
       icon={icon && icon}
+      type={type ? type : "text"}
     >
       {text}
     </Button>

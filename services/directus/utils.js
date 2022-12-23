@@ -21,7 +21,7 @@ export const getAll = async (item) => {
  * [getAllBy Items of an item collection with a specific Query]
  *
  * @param   {[String]}  item  [item to fetch]
- * @param   {[String]}  query  [query to fetch]
+ * @param   {[Object]}  query  [query to fetch]
  *
  * @return  {[Promise<JSON>]}         [return response]
  */
@@ -30,6 +30,22 @@ export const getAllBy = async (item, query) => {
     .items(item)
     .readByQuery(query)
     .then((response) => response)
+    .catch((error) => error);
+};
+
+/**
+ * [findBy will find ONE item with a specific query]
+ *
+ * @param   {[String]}  item  [item to fetch]
+ * @param   {[Object]}  query  [query to fetch]
+ *
+ * @return  {[Promise<JSON>]}         [return response]
+ */
+export const findBy = async (item, query) => {
+  return directus
+    .items(item)
+    .readByQuery(query)
+    .then((response) => response.data[0])
     .catch((error) => error);
 };
 

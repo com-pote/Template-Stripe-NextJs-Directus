@@ -1,4 +1,4 @@
-import { find, getAll, getAllBy } from "../../services/directus/utils";
+import { findBy, getAll, getAllBy } from "../../services/directus/utils";
 import Head from "next/head";
 import { UseUxContext } from "../../contexts/uxContext";
 import styles from "../../styles/Category.module.css";
@@ -6,12 +6,13 @@ import Flash from "../../components/Atoms/Flash/Flash";
 import { useEffect, useState } from "react";
 import Product from "../../components/Molecules/Product/Product";
 import { Container, Grid } from "@nextui-org/react";
+import BreadCrumb from "../../components/Molecules/BreadCrumb/BreadCrumb";
 
 export async function getStaticPaths() {
   const categories = await getAll("category");
 
   const paths = categories.map((item) => ({
-    params: { categorie: item.id.toString() },
+    params: { categorie: item.name.toString() },
   }));
   return {
     paths,
@@ -20,8 +21,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const id = context.params.categorie;
-  const category = await find("category", id);
+  const name = context.params.categorie;
+  const category = await findBy("category", {
+    search: name,
+    fields: ["*.*"],
+  });
   const categories = await getAll("category");
   return {
     props: {
@@ -36,13 +40,14 @@ const ProductSingle = ({ category }) => {
   const { flash, flashType } = UseUxContext();
 
   const [products, setProducts] = useState([]);
+  ``;
 
   useEffect(() => {
     getAllBy("product", {
       filter: {
         category: {
-          id: {
-            _eq: category.id,
+          name: {
+            _eq: category.name,
           },
         },
       },
@@ -57,8 +62,9 @@ const ProductSingle = ({ category }) => {
       <Head>
         <title>{`${category && category.name} | Nom du Commerce`}</title>
       </Head>
-      <Container responsive fluid className={styles.main}>
-        <article className={styles.container}>
+      <Container responsive fluid className={styles.container}>
+        <BreadCrumb />
+        <article className={styles.article}>
           <h1>{category && category.name}</h1>
           {products && (
             <Grid.Container gap={2} justify="flex-start">

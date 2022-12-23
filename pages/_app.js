@@ -5,6 +5,7 @@ import "../styles/reset.css";
 import { CartWrapper } from "../contexts/cartContext";
 import { UxWrapper } from "../contexts/uxContext";
 import { NextUIProvider, createTheme } from "@nextui-org/react";
+import { AuthGuard } from "../contexts/AuthGuard";
 
 const darkTheme = createTheme({ type: "dark" });
 
@@ -13,7 +14,19 @@ function MyApp({ Component, pageProps }) {
     <UxWrapper>
       <CartWrapper>
         <NextUIProvider>
-          {pageProps.categories ? (
+          {pageProps.protected && pageProps.categories ? (
+            <AuthGuard>
+              <Layout categories={pageProps.categories}>
+                <Component {...pageProps} />
+              </Layout>
+            </AuthGuard>
+          ) : pageProps.protected ? (
+            <AuthGuard>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </AuthGuard>
+          ) : pageProps.categories ? (
             <Layout categories={pageProps.categories}>
               <Component {...pageProps} />
             </Layout>

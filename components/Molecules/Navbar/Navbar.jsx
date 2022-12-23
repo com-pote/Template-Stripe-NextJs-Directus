@@ -1,17 +1,38 @@
 import styles from "./Navbar.module.css";
-import { Navbar, Row, Spacer } from "@nextui-org/react";
+import { Navbar } from "@nextui-org/react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
 import SearchBar from "../../Atoms/SearchBar/SearchBar";
-import { IoCartSharp } from "react-icons/io5";
+import { IoCartSharp, IoPersonAdd } from "react-icons/io5";
+import { IoMdLogIn } from "react-icons/io";
+import { FaUserCircle } from "react-icons/fa";
+import { BiLogOutCircle } from "react-icons/bi";
 import { useGetTotalQuantity } from "../../../hooks/useGetTotalQuantity";
-import { BsFacebook, BsInstagram } from "react-icons/bs";
 import { useRouter } from "next/router";
+import { UseUxContext } from "../../../contexts/uxContext";
+import Avatar from "../../Atoms/Avatar/Avatar";
+import directus from "../../../services/directus/directus";
 
 const NavbarUi = ({ categories }) => {
   const router = useRouter();
   const { asPath } = router;
+
+  const { isAuthenticated, setIsAuthenticated, user } = UseUxContext();
+
+  const logout = async () => {
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("auth_refresh_token")) {
+        await directus.auth
+          .logout(localStorage.getItem("auth_refresh_token"))
+          .then(() => {
+            setIsAuthenticated(false);
+            console.log("déco");
+          })
+          .catch((err) => console.log(err));
+      }
+    }
+  };
 
   return (
     <>
@@ -42,7 +63,7 @@ const NavbarUi = ({ categories }) => {
                 </Navbar.Item>
               ) : (
                 <Navbar.Link
-                  href={`/categorie/${c.id}`}
+                  href={`/categories/${c.name}`}
                   key={c.id}
                   isActive={asPath === `/categorie/${c.id}` ? true : false}
                 >
@@ -55,48 +76,77 @@ const NavbarUi = ({ categories }) => {
           <Navbar.Item hideIn="md">
             <SearchBar />
           </Navbar.Item>
-          <Navbar.Link href="/" hideIn="md" aria-label="Facebook">
-            <BsFacebook />
-          </Navbar.Link>
-          <Navbar.Link href="/" hideIn="md" aria-label="Instagram">
-            <BsInstagram />
-          </Navbar.Link>
+          {isAuthenticated ? (
+            <>
+              <Navbar.Item hideIn="md" aria-label="Déconnexion" onClick={logout} className={styles.logout}>
+                Déconnexion
+              </Navbar.Item>
 
-          <Navbar.Link href="/panier" className={styles.cartContainer}>
-            <IoCartSharp />
-            <span className={styles.qty}>{useGetTotalQuantity()}</span>
-          </Navbar.Link>
+              <Navbar.Item hideIn="md" aria-label="Mon Compte">
+                <Link href="/mon-compte">
+                  <Avatar infos={user} />
+                </Link>
+              </Navbar.Item>
+              <Navbar.Item showIn="md" aria-label="Connexion">
+                <Link href="/connexion">
+                  <BiLogOutCircle />
+                </Link>
+              </Navbar.Item>
+              <Navbar.Item showIn="md" aria-label="Inscription">
+                <Link href="/inscription">
+                  <FaUserCircle />
+                </Link>
+              </Navbar.Item>
+            </>
+          ) : (
+            <>
+              <Navbar.Item hideIn="md">
+                <Link href="/connexion" aria-label="Connexion">
+                  Connexion
+                </Link>
+              </Navbar.Item>
+
+              <Navbar.Item hideIn="md" aria-label="Inscription">
+                <Link href="/inscription">Inscription</Link>
+              </Navbar.Item>
+              <Navbar.Item showIn="md" aria-label="Connexion">
+                <Link href="/connexion">
+                  <IoMdLogIn />
+                </Link>
+              </Navbar.Item>
+              <Navbar.Item showIn="md" aria-label="Inscription">
+                <Link href="/inscription">
+                  <IoPersonAdd />
+                </Link>
+              </Navbar.Item>
+            </>
+          )}
+
+          <Navbar.Item className={styles.cartContainer}>
+            <Link href="/panier">
+              <IoCartSharp />
+              <span className={styles.qty}>{useGetTotalQuantity()}</span>
+            </Link>
+          </Navbar.Item>
         </Navbar.Content>
         <Navbar.Collapse>
-          {categories.map((item) => (
-            <Navbar.CollapseItem key={item.id}>
-              <Link
-                css={{
-                  minWidth: "100%",
-                }}
-                href={`/categorie/${item.id}`}
-                aria-label={item.name}
-              >
-                {item.name}
-              </Link>
-            </Navbar.CollapseItem>
-          ))}
+          {categories &&
+            categories.map((item) => (
+              <Navbar.CollapseItem key={item.id}>
+                <Link
+                  css={{
+                    minWidth: "100%",
+                  }}
+                  href={`/categories/${item.id}`}
+                  aria-label={item.name}
+                >
+                  {item.name}
+                </Link>
+              </Navbar.CollapseItem>
+            ))}
 
           <Navbar.CollapseItem>
             <SearchBar />
-          </Navbar.CollapseItem>
-          <Spacer y={2} />
-          <Navbar.CollapseItem>
-            <Row justify="center">
-              <Link href="/" aria-label="FaceBook">
-                <BsFacebook />
-              </Link>
-              <Spacer x={2} />
-
-              <Link href="/" aria-label="Instagram">
-                <BsInstagram />
-              </Link>
-            </Row>
           </Navbar.CollapseItem>
         </Navbar.Collapse>
       </Navbar>

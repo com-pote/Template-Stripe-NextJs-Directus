@@ -1,5 +1,8 @@
-import { useCallback, useState } from "react";
-import { createContext, useContext } from "react";
+import { useCallback, useEffect, useState, createContext, useContext } from "react";
+import { me } from "../services/directus/utils";
+import dayjs from "dayjs";
+import * as jose from "jose";
+import directus from "../services/directus/directus";
 
 const uxContext = createContext();
 
@@ -8,6 +11,50 @@ export const UxWrapper = ({ children }) => {
   const [flash, setFlash] = useState("");
   const [flashType, setFlashType] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState();
+  const [user, setUser] = useState(null);
+  const [redirect, setRedirect] = useState();
+  const [jwt, setJwt] = useState(null);
+  const [decoded, setDecoded] = useState(null);
+  const [exp, setExp] = useState(null);
+
+  useEffect(() => {
+    if (localStorage.getItem("auth_token")) {
+      setJwt(localStorage.getItem("auth_token").toString());
+    } else {
+      setIsAuthenticated(false);
+      setUser(null);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (jwt !== null) {
+      setDecoded(jose.decodeJwt(jwt));
+    }
+  }, [jwt]);
+
+  useEffect(() => {
+    if (decoded !== null) {
+      setExp(decoded.exp);
+    }
+  }, [decoded]);
+
+  useEffect(() => {
+    if (exp !== null) {
+      if (dayjs(exp * 1000).isAfter(dayjs())) {
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+      }
+    }
+  }, [exp, isAuthenticated]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      me()
+        .then((response) => setUser(response))
+        .catch((err) => console.log(err));
+    }
+  }, [isAuthenticated, setUser]);
 
   /**
    * deleteMessage - delete the current FlashMessage
@@ -39,6 +86,10 @@ export const UxWrapper = ({ children }) => {
         handleFlash,
         isAuthenticated,
         setIsAuthenticated,
+        user,
+        setUser,
+        redirect,
+        setRedirect,
       }}
     >
       {children}

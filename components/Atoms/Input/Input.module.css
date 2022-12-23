@@ -1,0 +1,20 @@
+.inputContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.inputContainer svg:not(:nth-child(1)),
+.inputContainer p {
+    margin-left: 1vw;
+    font-size: 1.5vh;
+    background-color: var(--success);
+    border-radius: 50%;
+    padding: .5vh;
+    width: 3vh;
+    height: 3vh;
+}
+
+.inputContainer svg:not(:nth-child(1)) polyline {
+    stroke: var(--body);
+}

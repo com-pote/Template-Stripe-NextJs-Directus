@@ -1,4 +1,3 @@
-import styles from "./SearchBar.module.css";
 import { BsSearch } from "react-icons/bs";
 import { Input } from "@nextui-org/react";
 import { UsecartContext } from "../../../contexts/cartContext";
@@ -11,7 +10,7 @@ const SearchBar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    router.push("/recherche");
+    router.push("/produits");
   };
 
   return (
