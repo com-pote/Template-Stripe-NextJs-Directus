@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { UseUxContext } from "../../../contexts/uxContext";
 import Avatar from "../../Atoms/Avatar/Avatar";
 import directus from "../../../services/directus/directus";
+import { UseSlug } from "../../../hooks/useSlug";
 
 const NavbarUi = ({ categories }) => {
   const router = useRouter();
@@ -22,12 +23,13 @@ const NavbarUi = ({ categories }) => {
 
   const logout = async () => {
     if (typeof window !== "undefined") {
-      if (localStorage.getItem("auth_refresh_token")) {
+      const refreshToken = localStorage.getItem("auth_refresh_token") && localStorage.getItem("auth_refresh_token");
+      if (refreshToken) {
         await directus.auth
-          .logout(localStorage.getItem("auth_refresh_token"))
+          .logout(refreshToken)
           .then(() => {
+            console.log(refreshToken);
             setIsAuthenticated(false);
-            console.log("déco");
           })
           .catch((err) => console.log(err));
       }
@@ -57,18 +59,14 @@ const NavbarUi = ({ categories }) => {
           </Navbar.Brand>
           {categories &&
             categories.map((c) =>
-              asPath === `/categorie/${c.id}` ? (
-                <Navbar.Item key={c.id} isActive={asPath === `/categorie/${c.id}` ? true : false}>
+              asPath === `/categorie/${c.name}` ? (
+                <Navbar.Item key={c.id} isActive={asPath === `/categorie/${c.name}` ? true : false}>
                   {c.name}
                 </Navbar.Item>
               ) : (
-                <Navbar.Link
-                  href={`/categories/${c.name}`}
-                  key={c.id}
-                  isActive={asPath === `/categorie/${c.id}` ? true : false}
-                >
-                  {c.name}
-                </Navbar.Link>
+                <Navbar.Item key={c.id} isActive={asPath === `/categorie/${c.name}` ? true : false}>
+                  <Link href={`/categories/${UseSlug(c.name)}`}>{c.name}</Link>
+                </Navbar.Item>
               )
             )}
         </Navbar.Content>
@@ -87,12 +85,10 @@ const NavbarUi = ({ categories }) => {
                   <Avatar infos={user} />
                 </Link>
               </Navbar.Item>
-              <Navbar.Item showIn="md" aria-label="Connexion">
-                <Link href="/connexion">
-                  <BiLogOutCircle />
-                </Link>
+              <Navbar.Item showIn="md" aria-label="Déconnexion" onClick={logout}>
+                <BiLogOutCircle />
               </Navbar.Item>
-              <Navbar.Item showIn="md" aria-label="Inscription">
+              <Navbar.Item showIn="md" aria-label="Mon Compte">
                 <Link href="/inscription">
                   <FaUserCircle />
                 </Link>
@@ -137,7 +133,7 @@ const NavbarUi = ({ categories }) => {
                   css={{
                     minWidth: "100%",
                   }}
-                  href={`/categories/${item.id}`}
+                  href={`/categories/${UseSlug(item.name)}`}
                   aria-label={item.name}
                 >
                   {item.name}

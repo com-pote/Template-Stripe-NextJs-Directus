@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useUxContext } from "./uxContext";
+import { UseUxContext } from "./uxContext";
 
 export function AuthGuard({ children }) {
-  const { isAuthenticated } = useUxContext();
+  const { isAuthenticated } = UseUxContext();
   const router = useRouter();
 
   useEffect(() => {

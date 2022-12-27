@@ -1,5 +1,17 @@
 import { UseUxContext } from "../contexts/uxContext";
+import { getAll } from "../services/directus/utils";
 import styles from "../styles/Profile.module.css";
+
+export async function getStaticProps() {
+  const categories = await getAll("category");
+  return {
+    props: {
+      categories: categories,
+      protected: true,
+    },
+    revalidate: 10,
+  };
+}
 
 const Profile = () => {
   const { user } = UseUxContext();

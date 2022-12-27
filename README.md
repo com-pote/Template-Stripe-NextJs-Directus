@@ -9,6 +9,7 @@
 - Catégories Distinctes dans le menu
 - UX Next UI (en cours)
 - Page Checkout Stripe
+- Tri des produits
 
 ## Résumé
 
@@ -18,7 +19,6 @@ Ce Projet est en cours de construction et permettra la facilitation de la mise e
 
 - Authentification sur le site.
 - Possibilité de générer une facture
-- Tri des produits
 - Filtrage des produits
 - Possibilité d'aggréger les API des différentes plateformes de commerce (Woocommerce, shopify, etc...)
 - Possibilité de se connecter aux API de livraisons (Fedex etc)

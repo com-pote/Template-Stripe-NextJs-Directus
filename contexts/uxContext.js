@@ -12,6 +12,7 @@ export const UxWrapper = ({ children }) => {
   const [flashType, setFlashType] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState();
   const [user, setUser] = useState(null);
+  const [sortProductsBy, setSortProductsBy] = useState(null);
   const [redirect, setRedirect] = useState();
   const [jwt, setJwt] = useState(null);
   const [decoded, setDecoded] = useState(null);
@@ -90,6 +91,8 @@ export const UxWrapper = ({ children }) => {
         setUser,
         redirect,
         setRedirect,
+        sortProductsBy,
+        setSortProductsBy,
       }}
     >
       {children}
