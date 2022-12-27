@@ -50,10 +50,13 @@ export const UxWrapper = ({ children }) => {
   }, [exp, isAuthenticated]);
 
   useEffect(() => {
-    if (isAuthenticated) {
+    const refreshToken = localStorage.getItem("auth_refresh_token") && localStorage.getItem("auth_refresh_token");
+    if (isAuthenticated && refreshToken) {
       me()
         .then((response) => setUser(response))
         .catch((err) => console.log(err));
+    } else {
+      setIsAuthenticated(false);
     }
   }, [isAuthenticated, setUser]);
 

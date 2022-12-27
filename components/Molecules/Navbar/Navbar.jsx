@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 import { UseUxContext } from "../../../contexts/uxContext";
 import Avatar from "../../Atoms/Avatar/Avatar";
 import directus from "../../../services/directus/directus";
-import { UseSlug } from "../../../hooks/useSlug";
+import { slugify } from "../../../services/utils";
 
 const NavbarUi = ({ categories }) => {
   const router = useRouter();
@@ -22,18 +22,12 @@ const NavbarUi = ({ categories }) => {
   const { isAuthenticated, setIsAuthenticated, user } = UseUxContext();
 
   const logout = async () => {
-    if (typeof window !== "undefined") {
-      const refreshToken = localStorage.getItem("auth_refresh_token") && localStorage.getItem("auth_refresh_token");
-      if (refreshToken) {
-        await directus.auth
-          .logout(refreshToken)
-          .then(() => {
-            console.log(refreshToken);
-            setIsAuthenticated(false);
-          })
-          .catch((err) => console.log(err));
-      }
-    }
+    await directus.auth
+      .logout()
+      .then(() => {
+        setIsAuthenticated(false);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -59,13 +53,13 @@ const NavbarUi = ({ categories }) => {
           </Navbar.Brand>
           {categories &&
             categories.map((c) =>
-              asPath === `/categorie/${c.name}` ? (
-                <Navbar.Item key={c.id} isActive={asPath === `/categorie/${c.name}` ? true : false}>
+              asPath === `/categories/${slugify(c.name)}` ? (
+                <Navbar.Item key={c.id} isActive={asPath === `/categories/${slugify(c.name)}` ? true : false}>
                   {c.name}
                 </Navbar.Item>
               ) : (
-                <Navbar.Item key={c.id} isActive={asPath === `/categorie/${c.name}` ? true : false}>
-                  <Link href={`/categories/${UseSlug(c.name)}`}>{c.name}</Link>
+                <Navbar.Item key={c.id} isActive={asPath === `/categories/${slugify(c.name)}` ? true : false}>
+                  <Link href={`/categories/${slugify(c.name)}`}>{c.name}</Link>
                 </Navbar.Item>
               )
             )}
@@ -133,7 +127,7 @@ const NavbarUi = ({ categories }) => {
                   css={{
                     minWidth: "100%",
                   }}
-                  href={`/categories/${UseSlug(item.name)}`}
+                  href={`/categories/${item.id}`}
                   aria-label={item.name}
                 >
                   {item.name}
