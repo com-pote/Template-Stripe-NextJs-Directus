@@ -25,16 +25,16 @@ const CheckoutForm = () => {
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
       switch (paymentIntent.status) {
         case "succeeded":
-          setMessage("Payment succeeded!");
+          setMessage("Paiement Validé!");
           break;
         case "processing":
-          setMessage("Your payment is processing.");
+          setMessage("En attente.");
           break;
         case "requires_payment_method":
-          setMessage("Your payment was not successful, please try again.");
+          setMessage("Le paiement n'à pas about, veuillez rééssayer.");
           break;
         default:
-          setMessage("Something went wrong.");
+          setMessage("Oups une erreur est survenue.");
           break;
       }
     });
