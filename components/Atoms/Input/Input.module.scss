@@ -1,0 +1,17 @@
+.inputContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.inputContainer svg:not(:nth-child(1)),
+.inputContainer p {
+    margin-left: .5vw;
+    width: 4vh;
+    height: 4vh;
+}
+
+.inputContainer input {
+    width: 100%;
+}

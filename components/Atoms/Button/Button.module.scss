@@ -1,0 +1,27 @@
+.container {
+    all: unset;
+    color: var(--body);
+    padding: 2vh 1vw;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    .icon {
+        margin-right: .5vw;
+    }
+
+}
+
+.primary {
+    background-color: var(--primary);
+}
+
+.opacity {
+    background-color: var(--opacity);
+}
+
+.warning {
+    background-color: var(--warning);
+}

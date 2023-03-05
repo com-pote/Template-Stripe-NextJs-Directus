@@ -1,11 +1,14 @@
 /* 1 Variables */
 
 :root {
-  --primary: #111111;
+  --primary: #4b73d7;
+  --opacity: #cfdcff;
   --dark: #111111;
   --body: #FFFFFF;
   --success: #8fae1b;
   --error: #E8544D;
+  --error-opacity: #ffc7c4;
+  --warning: #feba3b;
   --infos: #f7f6f7;
   --price: #b5b5b5;
   --font: 'Mulish', sans-serif;

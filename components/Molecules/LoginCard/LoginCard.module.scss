@@ -1,0 +1,33 @@
+.container {
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--body);
+    height: 50vh;
+    padding: 2vh;
+    margin-top: 5vh;
+
+    .form {
+        width: 100%;
+        padding: 2vh 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        input {
+            background-color: var(--opacity);
+            height: 5vh;
+            border: none;
+            padding-left: 1vw;
+            color: var(--primary);
+            margin-bottom: 2vh;
+        }
+    }
+
+    .submit {
+        margin-top: 2vh !important;
+    }
+}

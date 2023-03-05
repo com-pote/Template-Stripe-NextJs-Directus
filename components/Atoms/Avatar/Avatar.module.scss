@@ -1,0 +1,11 @@
+.user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .avatar {
+        position: relative;
+        width: 2em;
+        height: 2em;
+    }
+}

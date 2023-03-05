@@ -1,0 +1,16 @@
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a,
+    .last {
+        line-height: 1;
+        font-size: .9vw;
+    }
+
+    svg {
+        font-size: .8vw;
+        margin-top: .2vh;
+    }
+}

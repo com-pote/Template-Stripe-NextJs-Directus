@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    svg {
+        margin-right: .5vw;
+    }
+
+    .input {
+        all: unset;
+        padding: 0 .5vw .5vh .5vw;
+        border-bottom: 1px solid var(--primary);
+    }
+}
