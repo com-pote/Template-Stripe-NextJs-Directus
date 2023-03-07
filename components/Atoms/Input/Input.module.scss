@@ -2,16 +2,38 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 100%;
-}
+    width: 60%;
+    position: relative;
 
-.inputContainer svg:not(:nth-child(1)),
-.inputContainer p {
-    margin-left: .5vw;
-    width: 4vh;
-    height: 4vh;
-}
+    input {
+        margin: 0 auto;
+        margin-bottom: 2vh;
+        width: 100%;
+        height: 5vh;
+        padding-left: 1vw;
+        border: none;
+        background-color: var(--opacity);
+        color: var(--primary);
 
-.inputContainer input {
-    width: 100%;
+        &+svg {
+            position: absolute;
+            right: 0;
+            transform: translate(50%, -25%);
+        }
+
+        &+span {
+            position: absolute;
+            right: 0;
+            transform: translate(105%, -50%);
+            line-height: 1;
+            color: var(--error);
+            font-size: .9vw;
+        }
+
+    }
+
+    svg:not(:nth-child(1)) {
+        width: 4vh;
+        height: 4vh;
+    }
 }

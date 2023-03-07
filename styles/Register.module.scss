@@ -1,0 +1,13 @@
+.container {
+    background-color: var(--primary);
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5vh 0;
+
+    h1 {
+        color: var(--body);
+    }
+}

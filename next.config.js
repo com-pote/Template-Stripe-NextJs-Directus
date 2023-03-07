@@ -8,6 +8,7 @@ const nextConfig = {
   },
   publicRuntimeConfig: {
     url: process.env.DIRECTUS_URL,
+    role: process.env.ROLE,
     stripeKey: process.env.STRIPE_PUBLIC_API_KEY,
     stripeSecretKey: process.env.STRIPE_SECRET_KEY,
     stripeBaseURL: process.env.STRIPE_BASE_URL,

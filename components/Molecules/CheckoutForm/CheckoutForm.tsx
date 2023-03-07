@@ -1,5 +1,6 @@
 import React from "react";
-import { PaymentElement, LinkAuthenticationElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import styles from "./CheckoutForm.module.scss";
+import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import Button from "../../Atoms/Button/Button";
 import Loader from "../Loader/Loader";
 
@@ -7,7 +8,6 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [email, setEmail] = React.useState("");
   const [message, setMessage] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -74,7 +74,7 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
+    <form id="payment-form" onSubmit={handleSubmit} className={styles.container}>
       <PaymentElement id="payment-element" />
       <Button
         disabled={isLoading || !stripe || !elements}
@@ -84,6 +84,7 @@ const CheckoutForm = () => {
         color="primary"
       />
       {/* Show any error or success messages */}
+      {message === "en Attente" && <Loader />}
       {message && <div id="payment-message">{message}</div>}
     </form>
   );

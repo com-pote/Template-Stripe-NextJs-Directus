@@ -36,7 +36,7 @@ export default function Home() {
         <meta name="description" content="Une courte description de la page" />
       </Head>
 
-      <div className={styles.main}>
+      <main className={styles.main}>
         <Hero />
         <h1>Les derniers produits</h1>
         <div className={styles.latest}>
@@ -50,7 +50,7 @@ export default function Home() {
         <Link href="/produits">
           <Button text="Voir Tous les Produits" />
         </Link>
-      </div>
+      </main>
     </>
   );
 }

@@ -9,6 +9,7 @@ import { getAllMyAdresses, deleteAdress } from "../../../lib/directus/users";
 import Button from "../../../components/Atoms/Button/Button";
 import Edit from "../../../public/Edit";
 import Trash from "../../../public/Trash";
+import { IAddress } from "../../../Interfaces/IAddress";
 
 export async function getStaticProps() {
   const categories = await getAllCategories();
@@ -22,7 +23,7 @@ export async function getStaticProps() {
 }
 
 const Adress = () => {
-  const [myAddresses, setMyAddresses] = useState([]);
+  const [myAddresses, setMyAddresses] = useState<IAddress[]>([]);
   const { user } = useAuth();
 
   const deleteMyAdress = useCallback(
@@ -74,7 +75,7 @@ const Adress = () => {
   ];
 
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <BreadCrumb />
       <h1>Mes Adresses</h1>
       {user && myAddresses.length !== 0 ? (
@@ -96,7 +97,9 @@ const Adress = () => {
                   <td>{a.city}</td>
                   <td>{a.country}</td>
                   <td>
-                    <Edit width="2em" height="2em" />
+                    <Link href={`/mon-compte/adresses/modifier/${a.id}`}>
+                      <Edit width="2em" height="2em" />
+                    </Link>
                     <Trash width="2em" height="2em" />
                   </td>
                 </tr>
@@ -104,7 +107,7 @@ const Adress = () => {
             </tbody>
           </table>
           <Link href="/mon-compte/adresses/ajouter" style={{ color: "white" }}>
-            <Button text="Nouvelle Adresse" color="primary" />
+            <Button text="Nouvelle Adresse" color="success" />
           </Link>
         </>
       ) : (
@@ -114,7 +117,7 @@ const Adress = () => {
           <AddressFormCard />
         </div>
       )}
-    </div>
+    </main>
   );
 };
 

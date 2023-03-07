@@ -33,7 +33,6 @@ export async function getStaticProps(context) {
 
 const ProductSingle = ({ category }) => {
   const [products, setProducts] = useState([]);
-  ``;
 
   useEffect(() => {
     if (category) {
@@ -46,7 +45,7 @@ const ProductSingle = ({ category }) => {
       <Head>
         <title>{`${category && category.name} | Nom du Commerce`}</title>
       </Head>
-      <div className={styles.container}>
+      <main className={styles.container}>
         <BreadCrumb />
         <h1>{category && category.name}</h1>
         {products && (
@@ -59,7 +58,7 @@ const ProductSingle = ({ category }) => {
               ))}
           </div>
         )}
-      </div>
+      </main>
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import directus from "../lib/directus/directus";
-import { IUser } from "../Interfaces/IUser";
 import { IAuth } from "../Interfaces/IAuth";
+import { ItemInput, UserItem } from "@directus/sdk";
 
 interface Props {
   children: React.ReactElement;
@@ -18,16 +18,16 @@ const AuthContext = createContext<IAuth>({
 });
 
 export const AuthWrapper = ({ children }: Props) => {
-  const [user, setUser] = useState<IUser | null>(null);
+  const [user, setUser] = useState<ItemInput<UserItem<unknown>>>(null);
   const [loading, setLoading] = useState(true);
   const isAuthenticated = !!user;
 
   useEffect(() => {
     async function loadUserFromDirectus() {
-      directus.auth.refresh();
       const token = await directus.auth.token;
 
       if (token) {
+        directus.auth.refresh();
         const me = await directus.users.me.read();
         setUser(me);
       }

@@ -90,8 +90,7 @@ h3 {
   font-size: 6vw;
   margin: 10px 0;
   letter-spacing: 1px;
-  text-decoration: underline;
-  color: var(--primary);
+  color: var(--body);
   font-weight: 400;
   font-style: italic;
   font-family: var(--font);

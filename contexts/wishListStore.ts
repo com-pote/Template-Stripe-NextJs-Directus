@@ -1,7 +1,7 @@
+import { ItemInput, UserItem } from "@directus/sdk";
 import { toast } from "react-toastify";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { IUser } from "../Interfaces/IUser";
 import { IWishListItem } from "../Interfaces/IWishListItem";
 import { createItem, deleteItem } from "../lib/directus/utils";
 import { getAllWishList } from "../lib/directus/wishList";
@@ -11,8 +11,8 @@ type State = {
 };
 
 type Action = {
-  addToWishList: (item: IWishListItem, user: IUser) => void;
-  removeFromWishList: (item: IWishListItem, user: IUser) => void;
+  addToWishList: (item: IWishListItem, user: ItemInput<UserItem<unknown>>) => void;
+  removeFromWishList: (item: IWishListItem, user: ItemInput<UserItem<unknown>>) => void;
 };
 
 export const useWishListStore = create(

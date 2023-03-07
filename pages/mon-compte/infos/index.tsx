@@ -6,9 +6,8 @@ import BreadCrumb from "../../../components/Molecules/BreadCrumb/BreadCrumb";
 import { useAuth } from "../../../contexts/AuthContext";
 import { getAllCategories } from "../../../lib/directus/categories";
 import { updateMe } from "../../../lib/directus/users";
-import { IUser } from "../../../Interfaces/IUser";
-import ButtonUI from "../../../components/Atoms/Button/Button";
 import Button from "../../../components/Atoms/Button/Button";
+import { ItemInput, UserItem } from "@directus/sdk";
 
 export async function getStaticProps() {
   const categories = await getAllCategories();
@@ -30,7 +29,7 @@ const Profile = () => {
     formState: { errors, dirtyFields },
   } = useForm({ mode: "onChange" });
 
-  const submit = async (credentials: IUser) => {
+  const submit = async (credentials: ItemInput<UserItem<unknown>>) => {
     updateMe(credentials).then(() => {
       logout();
     });
@@ -41,7 +40,7 @@ const Profile = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <BreadCrumb />
       <h1>Mes Infos</h1>
       {user && (
@@ -60,7 +59,6 @@ const Profile = () => {
             })}
             error={errors.email}
             dirty={dirtyFields.email}
-            label="Changer Email"
             id="email"
             placeholder="nom@pocli.fr"
             defaultValue={user.email}
@@ -72,7 +70,7 @@ const Profile = () => {
           <Button color="primary" onClick={requestPasswordChange} text="Changer mot de passe" />
         </>
       )}
-    </div>
+    </main>
   );
 };
 

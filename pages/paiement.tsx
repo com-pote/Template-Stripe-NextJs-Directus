@@ -4,14 +4,12 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/Molecules/CheckoutForm/CheckoutForm";
 import getConfig from "next/config";
 import { useCartStore } from "../contexts/cartStore";
+import styles from "../styles/Payment.module.scss";
 
 const { publicRuntimeConfig } = getConfig();
 
 const { stripeKey } = publicRuntimeConfig;
 
-// Make sure to call loadStripe outside of a component’s render to avoid
-// recreating the Stripe object on every render.
-// This is your test publishable API key.
 const stripePromise = loadStripe(stripeKey);
 
 const Payment = () => {
@@ -35,13 +33,14 @@ const Payment = () => {
   };
 
   return (
-    <>
+    <main className={styles.container}>
+      <h1>Paiement de votre commande</h1>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />
         </Elements>
       )}
-    </>
+    </main>
   );
 };
 

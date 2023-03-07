@@ -32,6 +32,7 @@ const Cart = () => {
   const removeOneFromCart = useCartStore((state) => state.removeOneFromCart);
   const deleteFromCart = useCartStore((state) => state.deleteFromCart);
   const router = useRouter();
+
   useEffect(() => {
     if (cart) {
       setTotal(getTotalCost(cart));
@@ -60,7 +61,7 @@ const Cart = () => {
   ];
 
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <h1>Panier</h1>
       {quantity > 0 ? (
         <>
@@ -114,7 +115,7 @@ const Cart = () => {
       <Link href="/">
         <Button className={styles.home} icon={<Home width="2em" height="2em" />} text="Retour à l'accueil" color="primary" />
       </Link>
-    </div>
+    </main>
   );
 };
 

@@ -19,7 +19,7 @@ const Profile = () => {
   const myWishList = useWishListStore((state) => state.wishList);
 
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <BreadCrumb />
       <h1>Liste d&apos;envie</h1>
       {myWishList && myWishList.length !== 0 ? (
@@ -27,7 +27,7 @@ const Profile = () => {
       ) : (
         <p>Aucun Produit dans votre liste d&apos;envie</p>
       )}
-    </div>
+    </main>
   );
 };
 

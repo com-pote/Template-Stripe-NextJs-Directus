@@ -15,7 +15,7 @@ export async function getStaticProps() {
 
 const Categories = ({ categories }) => {
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <BreadCrumb />
       <h1>Catégories</h1>
 
@@ -26,7 +26,7 @@ const Categories = ({ categories }) => {
           </li>
         ))}
       </ul>
-    </div>
+    </main>
   );
 };
 

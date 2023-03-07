@@ -1,7 +1,18 @@
-import { IUser } from "../../Interfaces/IUser";
+import { ItemInput, UserItem } from "@directus/sdk";
 import directus from "./directus";
 
-export const updateMe = async (credentials: IUser) => {
+export const createUser = async (credentials: {
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+  role: string;
+  avatar: string;
+}) => {
+  return await directus.users.createOne(credentials);
+};
+
+export const updateMe = async (credentials: ItemInput<UserItem<unknown>>) => {
   await directus.users.me.update(credentials);
 };
 

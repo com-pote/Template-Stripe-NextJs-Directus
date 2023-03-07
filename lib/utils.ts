@@ -1,6 +1,4 @@
-import { ICart } from "../Interfaces/ICart";
 import { ICartItem } from "../Interfaces/ICartItem";
-import { IProduct } from "../Interfaces/IProduct";
 
 export const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -34,8 +32,8 @@ export const capitalize = (string: string): string => {
 };
 
 // Retourne la quantité d'un produit du panier en fonction de son ID et du panier
-export const getProductQuantity = (price_url: string, cart) => {
-  const quantity = cart.find((p: IProduct) => p.price_url === price_url)?.quantity;
+export const getProductQuantity = (id: string | number, cart: ICartItem[]) => {
+  const quantity = cart.find((p: ICartItem) => p.id === id)?.quantity;
 
   if (quantity === undefined) {
     return 0;
@@ -49,7 +47,7 @@ export const getTotalCost = (cart: ICartItem[]): number => {
   let totalCost = 0;
   cart.map((cartItem: ICartItem) => {
     for (let i = 0; i < cart.length; i++) {
-      if (cart[i].price_url === cartItem.price_url) {
+      if (cart[i].id === cartItem.id) {
         totalCost += cart[i].price * cartItem.quantity;
       }
     }

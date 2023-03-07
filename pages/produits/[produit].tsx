@@ -9,6 +9,7 @@ import { ICartItem } from "../../Interfaces/ICartItem";
 import Button from "../../components/Atoms/Button/Button";
 import { useCartStore } from "../../contexts/cartStore";
 import Badge from "../../components/Atoms/Badge/Badge";
+import BreadCrumb from "../../components/Molecules/BreadCrumb/BreadCrumb";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const produits = await getAllProduct();
@@ -46,8 +47,8 @@ const ProductSingle = ({ product }) => {
       <Head>
         <title>{`${product && product.name} | Nom du Commerce`}</title>
       </Head>
-      <div className={styles.container}>
-        {/* <BreadCrumb /> */}
+      <main className={styles.container}>
+        <BreadCrumb />
         <article>
           {product && (
             <>
@@ -66,7 +67,7 @@ const ProductSingle = ({ product }) => {
             </>
           )}
         </article>
-      </div>
+      </main>
     </>
   );
 };

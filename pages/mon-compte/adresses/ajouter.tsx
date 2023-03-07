@@ -16,14 +16,14 @@ export async function getStaticProps() {
 
 const Adress = () => {
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <BreadCrumb />
       <h1>Mes Adresses</h1>
 
       <div className={styles.body}>
         <AddressFormCard />
       </div>
-    </div>
+    </main>
   );
 };
 

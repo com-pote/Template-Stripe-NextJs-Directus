@@ -2,7 +2,12 @@ import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import { getAllCategories } from "../lib/directus/categories";
 import { useCartStore } from "../contexts/cartStore";
-import useEffectOnce from "../hooks/useEffectOnce";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { createOrder, createOrderline } from "../lib/directus/order";
+import { useAuth } from "../contexts/AuthContext";
+import Loader from "../components/Atoms/Loader/Loader";
+import { IOrder } from "../Interfaces/IOrder";
 
 export async function getStaticProps() {
   const categories = await getAllCategories();
@@ -15,11 +20,43 @@ export async function getStaticProps() {
 }
 
 const Confirmed = () => {
+  const [check, setCheck] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const cart = useCartStore((state) => state.cart);
   const clear = useCartStore((state) => state.clearCart);
 
-  useEffectOnce(() => {
-    clear();
-  });
+  const { user } = useAuth();
+
+  const router = useRouter();
+
+  const { payment_intent } = router.query;
+
+  useEffect(() => {
+    fetch("/api/check-payment-success", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: payment_intent }),
+    })
+      .then((res) => res.json())
+      .then((data) => setCheck(data));
+  }, [payment_intent]);
+
+  useEffect(() => {
+    if (check !== null && loading == true) {
+      if (check.status === "succeeded") {
+        createOrder(user).then((data: IOrder) => cart.map((i) => createOrderline(data.id.toString(), i)));
+        setLoading(false);
+      } else {
+        router.push("/paiement-annule");
+      }
+    }
+  }, [cart, router, user, check, loading]);
+
+  useEffect(() => {
+    if (!loading) {
+      clear();
+    }
+  }, [clear, loading]);
 
   return (
     <>
@@ -29,11 +66,17 @@ const Confirmed = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1>Paiement Validé</h1>
-        <p>
-          Merci pour votre commande, vous allez bientôt recevoir un mail confirmant votre paiement et contenant votre facture
-          et votre suivi de livraison
-        </p>
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <h1>Paiement Validé</h1>
+            <p>
+              Merci pour votre commande, vous allez bientôt recevoir un mail confirmant votre paiement et contenant votre
+              facture et votre suivi de livraison
+            </p>
+          </>
+        )}
       </main>
     </>
   );

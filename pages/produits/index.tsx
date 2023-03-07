@@ -36,7 +36,7 @@ const Products = () => {
         <meta name="description" content="Une courte description de la page" />
       </Head>
 
-      <div className={styles.container}>
+      <main className={styles.container}>
         <Breadcrumb />
         <h1>Produits</h1>
         {/* <Select
@@ -55,7 +55,7 @@ const Products = () => {
               </div>
             ))}
         </div>
-      </div>
+      </main>
     </>
   );
 };

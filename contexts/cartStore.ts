@@ -21,7 +21,7 @@ export const useCartStore = create(
       cart: [],
       //Ajoute un produit au panier si il n'est pas dedans ou rajoute un à la quantité si il est déjà dedans
       addOneToCart: (item) => {
-        const quantity = getProductQuantity(item.price_url, get().cart);
+        const quantity = getProductQuantity(item.id, get().cart);
 
         if (quantity === 0) {
           // pas dans le panier
@@ -30,9 +30,7 @@ export const useCartStore = create(
         } else {
           // déjà dans le panier
           set(() => ({
-            cart: get().cart.map((p: ICartItem) =>
-              p.price_url === item.price_url ? { ...p, quantity: p.quantity + 1 } : p
-            ),
+            cart: get().cart.map((p: ICartItem) => (p.id === item.id ? { ...p, quantity: p.quantity + 1 } : p)),
           }));
           toast.success("Produit Ajouté au panier", {});
         }
@@ -44,16 +42,14 @@ export const useCartStore = create(
       },
       // retire une itération du produit du panier ou le retire totalement si il n'y en a qu'un
       removeOneFromCart: (item): void => {
-        const quantity = getProductQuantity(item.price_url, get().cart);
+        const quantity = getProductQuantity(item.id, get().cart);
 
         if (quantity == 1) {
           set({ cart: get().cart.filter((current) => current.id != item.id) });
           toast.error("Produit retiré du panier", {});
         } else {
           set({
-            cart: get().cart.map((p: ICartItem) =>
-              p.price_url === item.price_url ? { ...p, quantity: p.quantity - 1 } : p
-            ),
+            cart: get().cart.map((p: ICartItem) => (p.id === item.id ? { ...p, quantity: p.quantity - 1 } : p)),
           });
           toast.info("Produit retiré du panier", {});
         }

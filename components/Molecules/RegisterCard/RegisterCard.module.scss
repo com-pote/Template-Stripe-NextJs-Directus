@@ -1,0 +1,13 @@
+.container {
+    background-color: var(--body);
+    width: 90vw;
+    margin-top: 5vh;
+    padding: 5vh;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

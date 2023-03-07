@@ -30,8 +30,7 @@ const LoginCard = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <span>Formulaire de connexion</span>
+    <section className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit(submit)}>
         <Input
           {...register("email", {
@@ -44,7 +43,6 @@ const LoginCard = () => {
           })}
           error={errors.email}
           dirty={dirtyFields.email}
-          label="Email"
           id="email"
           placeholder="nom@domain.fr"
           defaultValue=""
@@ -60,7 +58,6 @@ const LoginCard = () => {
           })}
           error={errors.password}
           dirty={dirtyFields.password}
-          label="Mot de Passe"
           id="password"
           type="password"
           placeholder="**********"
@@ -73,7 +70,7 @@ const LoginCard = () => {
       <Link href="/">
         <span className="passwordForgot">Mot de passe oublié ?</span>
       </Link>
-    </div>
+    </section>
   );
 };
 

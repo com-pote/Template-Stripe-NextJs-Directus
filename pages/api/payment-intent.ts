@@ -8,7 +8,7 @@ const calculateOrderAmount = (cart: ICartItem[]) => {
   let totalCost = 0;
   cart.map((cartItem: ICartItem) => {
     for (let i = 0; i < cart.length; i++) {
-      if (cart[i].price_url === cartItem.price_url) {
+      if (cart[i].id === cartItem.id) {
         totalCost += cart[i].price * cartItem.quantity;
       }
     }
