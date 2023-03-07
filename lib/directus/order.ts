@@ -1,9 +1,9 @@
 import directus from "./directus";
 import { IAddress } from "../../Interfaces/IAddress";
-import { UserItem } from "@directus/sdk";
+import { ItemInput, UserItem } from "@directus/sdk";
 import { ICartItem } from "../../Interfaces/ICartItem";
 
-export const getMyorders = async (user: UserItem): Promise<IAddress[]> => {
+export const getMyorders = async (user: ItemInput<UserItem<unknown>>): Promise<IAddress[]> => {
   return await directus
     .items("order")
     .readByQuery({
@@ -21,7 +21,7 @@ export const getMyorders = async (user: UserItem): Promise<IAddress[]> => {
     .catch((err) => err);
 };
 
-export const createOrder = async (user: UserItem): Promise<unknown> => {
+export const createOrder = async (user: ItemInput<UserItem<unknown>>): Promise<unknown> => {
   const now = new Date();
   return await directus
     .items("order")

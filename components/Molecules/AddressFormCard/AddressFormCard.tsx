@@ -59,7 +59,6 @@ export const AddressFormCard = () => {
               {...register("name", {
                 required: { value: true, message: "Requis" },
               })}
-              label="Nom de l'Adresse"
               error={errors.name}
               dirty={dirtyFields.name}
               id="name"
@@ -71,7 +70,6 @@ export const AddressFormCard = () => {
               })}
               error={errors.street}
               dirty={dirtyFields.street}
-              label="Rue"
               id="street"
               defaultValue=""
             />
@@ -81,7 +79,6 @@ export const AddressFormCard = () => {
               })}
               error={errors.zip_code}
               dirty={dirtyFields.zip_code}
-              label="Code Postal"
               id="zip_code"
               defaultValue=""
             />
@@ -91,7 +88,6 @@ export const AddressFormCard = () => {
               })}
               error={errors.city}
               dirty={dirtyFields.city}
-              label="Ville"
               id="zip_code"
               defaultValue=""
             />
@@ -101,7 +97,6 @@ export const AddressFormCard = () => {
               })}
               error={errors.country}
               dirty={dirtyFields.country}
-              label="Pays"
               id="country"
               defaultValue=""
             />
