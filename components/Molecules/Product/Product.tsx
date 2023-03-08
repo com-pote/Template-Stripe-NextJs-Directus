@@ -47,7 +47,8 @@ const Product = ({ product }) => {
                 src={product.fimg.id ? getAsset(product.fimg.id) : getAsset(product.fimg)}
                 alt={product.name}
                 fill
-                sizes="20vw"
+                sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 20vw"
                 priority={true}
                 quality="100"
                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}

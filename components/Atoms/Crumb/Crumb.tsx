@@ -37,7 +37,7 @@ const Crumb = ({
   return (
     <div className={styles.link}>
       <Link href={href}>{text && decodeURI(text)}</Link>
-      &nbsp; &gt; &nbsp;
+      <span>&nbsp; &gt; &nbsp;</span>
     </div>
   );
 };

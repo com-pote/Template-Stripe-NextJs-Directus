@@ -38,18 +38,20 @@ export default function Home() {
 
       <main className={styles.main}>
         <Hero />
-        <h1>Les derniers produits</h1>
-        <div className={styles.latest}>
-          {products &&
-            products.slice(0, 5).map((p) => (
-              <div key={p.id}>
-                <Product product={p} />
-              </div>
-            ))}
-        </div>
-        <Link href="/produits">
-          <Button text="Voir Tous les Produits" />
-        </Link>
+        <section>
+          <h1>Les derniers produits</h1>
+          <div className={styles.latest}>
+            {products &&
+              products.slice(0, 5).map((p) => (
+                <div key={p.id}>
+                  <Product product={p} />
+                </div>
+              ))}
+          </div>
+          <Link href="/produits">
+            <Button text="Voir Tous les Produits" />
+          </Link>
+        </section>
       </main>
     </>
   );

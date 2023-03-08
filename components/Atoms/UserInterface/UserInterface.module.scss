@@ -1,0 +1,48 @@
+.container {
+    width: 90vw;
+    height: 40vh;
+    background-color: var(--opacity);
+    position: absolute;
+    z-index: 15;
+    left: 5vw;
+    top: calc(10vh + 5vw);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5vw;
+    transition: all 1s;
+
+    &.visible {
+        left: 100vw;
+        transition: all 1s;
+    }
+
+    &>div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .infos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            div:nth-child(1) {
+                width: 30vw;
+                height: 30vw;
+            }
+
+            .text {
+                p {
+                    font-size: 4vw;
+                }
+            }
+        }
+
+        button {
+            margin-bottom: 2vh;
+        }
+    }
+}

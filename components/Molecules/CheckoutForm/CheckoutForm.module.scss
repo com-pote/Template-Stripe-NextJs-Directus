@@ -1,7 +1,7 @@
 .container {
     background-color: var(--body);
-    width: 50vw;
-    height: 50vh;
+    width: 90vw;
+    height: 60vh;
     padding: 2vw;
     margin-top: 5vh;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, .1));
@@ -16,5 +16,12 @@
 
     button {
         margin-top: 5vh;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .container {
+        width: 50vw;
+        height: 50vh;
     }
 }

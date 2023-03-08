@@ -1,18 +1,77 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    height: 10vh;
+    width: 50vw;
 
-    svg {
-        margin-right: .5vw;
+    div:nth-child(1) {
+
+        svg {
+            position: absolute;
+            top: 50%;
+            transform: translate(-125%, -50%);
+        }
+
+    }
+
+    div:nth-child(3) {
+        position: relative;
+        height: 10vh;
+        width: 100%;
     }
 
     .input {
         all: unset;
         padding: 0 .5vw .5vh .5vw;
-        border-bottom: 1px solid var(--primary);
+        position: absolute;
+        border-bottom: 1px solid var(--opacity);
+        color: var(--body);
+
     }
+
+
+    ::placeholder {
+        color: var(--body);
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .container {
+        height: 5vh;
+        width: 20vw;
+
+        div:nth-child(2) {
+
+            svg {
+                position: absolute;
+                top: 50%;
+                transform: translate(-125%, -50%);
+            }
+
+        }
+
+        div:nth-child(3) {
+            position: absolute;
+            height: 5vh;
+            top: 0;
+            left: 0;
+        }
+
+        .input {
+            all: unset;
+            padding: 0 .5vw .5vh .5vw;
+            position: absolute;
+            width: 20vw;
+            border-bottom: 1px solid var(--opacity);
+            color: var(--body);
+
+        }
+
+
+        ::placeholder {
+            color: var(--opacity);
+        }
+    }
+
 }

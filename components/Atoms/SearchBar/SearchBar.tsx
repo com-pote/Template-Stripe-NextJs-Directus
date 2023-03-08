@@ -20,7 +20,12 @@ const SearchBar = () => {
 
   return (
     <form onSubmit={handleSearch} className={styles.container}>
-      <Magnifying width="2em" height="2em" color="var(--primary)" bg="var(--primary)" />
+      <div className="mobile">
+        <Magnifying width="2em" height="2em" color="var(--opacity)" bg="var(--opacity)" />
+      </div>
+      <div className="not-mobile">
+        <Magnifying width="2em" height="2em" color="var(--primary)" bg="var(--primary)" />
+      </div>
       <Input
         id="searchBar"
         placeholder="Rechercher"

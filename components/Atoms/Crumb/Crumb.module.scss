@@ -6,11 +6,29 @@
     a,
     .last {
         line-height: 1;
-        font-size: .9vw;
+        font-size: 5vw;
     }
 
-    svg {
-        font-size: .8vw;
-        margin-top: .2vh;
+    span {
+        color: var(--opacity);
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a,
+        .last {
+            line-height: 1;
+            font-size: .9vw;
+        }
+
+        svg {
+            font-size: .8vw;
+            margin-top: .2vh;
+        }
     }
 }

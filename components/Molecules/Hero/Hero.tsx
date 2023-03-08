@@ -6,13 +6,13 @@ import Cart from "../../../public/Cart";
 
 const Hero = () => {
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className={styles.header}>
         <span>Nom de la Marque</span>
         <span>Slogan de la marque</span>
       </div>
       <div className={styles.body}>
-        <Image src="/bg.jpg" fill alt="Relaxing app background" />
+        <Image src="/bg.jpg" fill alt="Relaxing app background" priority />
       </div>
       <div className={styles.footer}>
         <Link href="/produits">
@@ -23,7 +23,7 @@ const Hero = () => {
           />
         </Link>
       </div>
-    </div>
+    </section>
   );
 };
 

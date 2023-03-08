@@ -68,10 +68,11 @@ ol li::marker {
 h1 {
   color: var(--dark);
   letter-spacing: 1px;
-  font-size: 10vw;
+  font-size: 8vw;
+  text-align: center;
   line-height: 1;
   font-family: var(--font);
-  font-weight: 200;
+  font-weight: 700;
   font-style: italic;
 }
 
@@ -117,6 +118,10 @@ button {
   justify-content: center;
   align-items: center;
   border: 1px solid var(--price);
+}
+
+section {
+  padding: 2vh;
 }
 
 @media screen and (min-width:1200px) {

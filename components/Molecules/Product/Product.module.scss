@@ -49,10 +49,11 @@
         justify-content: space-between;
         align-items: center;
         padding: 1vh 0;
-        height: 20vh;
+        min-height: 20vh;
+        max-height: 25vh;
 
         .price {
-            font-size: 1.5vw;
+            font-size: 8vw;
             color: var(--price);
         }
 

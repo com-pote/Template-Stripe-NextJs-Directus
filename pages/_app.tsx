@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }) {
           </Layout>
         )}
       </AuthWrapper>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );
 }

@@ -26,6 +26,9 @@ const Button = ({ text, onClick, color, icon, className, disabled }: ButtonProps
       case "warning":
         setBackground(styles.warning);
         break;
+      case "error":
+        setBackground(styles.error);
+        break;
       case "success":
         setBackground(styles.success);
         break;

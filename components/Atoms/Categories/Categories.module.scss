@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 60vw;
+    background-color: var(--opacity);
+    position: absolute;
+    right: -60vw;
+    top: 15vh;
+    padding: 5vw;
+    z-index: 15;
+    transition: all 1s;
+
+    &.visible {
+        right: 0;
+        transition: all 1s;
+    }
+
+    .category {
+        color: var(--primary);
+        font-size: 6vw;
+        height: 10vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

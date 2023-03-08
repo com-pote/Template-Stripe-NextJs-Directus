@@ -12,6 +12,7 @@ import { useCartStore } from "../../../contexts/cartStore";
 import Logout from "../../../public/Logout";
 import Login from "../../../public/Login";
 import Register from "../../../public/Register";
+import { ICategory } from "../../../Interfaces/ICategory";
 
 const Header = ({ categories }) => {
   const [quantity, setQuantity] = useState(0);
@@ -28,7 +29,7 @@ const Header = ({ categories }) => {
   }, [cart]);
 
   return (
-    <header className={styles.container}>
+    <header className={`not-mobile ${styles.container}`}>
       <nav className={styles.menu}>
         <div className={styles.logo}>
           <Link href="/" aria-label="Logo">
@@ -53,7 +54,7 @@ const Header = ({ categories }) => {
             <>
               <div aria-label="Connexion">
                 <Link href="/connexion" title="Connexion">
-                  <Login width="2em" height="2em" />
+                  <Login width="2em" height="2em" color="vaer(--primary)" bg="var(--opacity)" />
                 </Link>
               </div>
               <div aria-label="Inscription" title="Inscription">
@@ -71,7 +72,7 @@ const Header = ({ categories }) => {
       </nav>
       <nav className={styles.categories}>
         {categories &&
-          categories.map((c) =>
+          categories.map((c: ICategory) =>
             asPath === `/categories/${c.slug}` ? (
               <div key={c.id} className={asPath === `/categories/${c.slug}` ? styles.active : ""}>
                 {c.name}

@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary);
+    padding: 2vh;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10vh;
+    z-index: 10;
+
+    a:nth-child(3) svg {
+        transform: translateY(-25%);
+        background-color: var(--primary);
+        border-radius: 50%;
+        font-size: 4vh;
+        padding: 2vh;
+        border: 3px solid var(--body);
+    }
+
+}

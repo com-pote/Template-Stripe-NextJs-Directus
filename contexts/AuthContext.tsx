@@ -15,11 +15,14 @@ const AuthContext = createContext<IAuth>({
   login: async () => {},
   logout: async () => {},
   getToken: async () => null,
+  visible: false,
+  toggle: () => false,
 });
 
 export const AuthWrapper = ({ children }: Props) => {
   const [user, setUser] = useState<ItemInput<UserItem<unknown>>>(null);
   const [loading, setLoading] = useState(true);
+  const [visible, toggle] = useState(false);
   const isAuthenticated = !!user;
 
   useEffect(() => {
@@ -45,9 +48,9 @@ export const AuthWrapper = ({ children }: Props) => {
         password: password,
       })
       .then((data) => data)
-      .catch((error) => {
-        error.log(error);
-        return error;
+      .catch((err) => {
+        console.error(err);
+        return err;
       });
     if (res?.errors?.length > 0) return res;
 
@@ -73,7 +76,7 @@ export const AuthWrapper = ({ children }: Props) => {
     return null;
   };
 
-  const value = { isAuthenticated, user, loading, logout, getToken, login };
+  const value = { isAuthenticated, user, loading, logout, getToken, login, visible, toggle };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

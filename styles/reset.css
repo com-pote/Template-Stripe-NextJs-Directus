@@ -67,12 +67,13 @@ li {
     isolation: isolate;
     overflow-x: hidden;
     position: relative;
+    padding: 10vh 0 10vh 0;
 }
 
 @media screen and (min-width:1200px) {
 
     #root,
     #__next {
-        padding-bottom: 0;
+        padding: 0;
     }
 }
