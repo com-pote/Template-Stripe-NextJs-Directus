@@ -1,9 +1,9 @@
 import styles from "./Avatar.module.scss";
 import getAssets from "../../../lib/directus/getAssets";
 import Image from "next/image";
-import { UserItem } from "@directus/sdk";
+import { ItemInput, UserItem } from "@directus/sdk";
 
-const Avatar = ({ infos, onClick }: { infos: UserItem; onClick?: () => void }) => {
+const Avatar = ({ infos, onClick }: { infos: ItemInput<UserItem<unknown>>; onClick?: () => void }) => {
   return (
     infos && (
       <div className={styles.user} onClick={onClick}>

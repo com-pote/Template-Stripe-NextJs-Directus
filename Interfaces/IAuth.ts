@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 
 export interface IAuth {
   isAuthenticated: boolean;
-  user: UserItem<unknown> | null;
+  user: ItemInput<UserItem<unknown>> | null;
   loading: boolean;
   login: ({ email, password }: { email: string; password: string }) => Promise<unknown>;
   logout: () => Promise<unknown>;
